@@ -1,2 +1,3 @@
 # Windows:
 *.class
+/MyMavenWeb/target/*
