@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.minstone.common.util.Tools;
 //import com.minstone.pms.indi.controller.IndiController;
 import com.xiaoming.test.dao.TestDao;
 
@@ -31,4 +30,5 @@ public class TestController {
 		map.remove("UPDATE_TIME");
 		return map;
 	}
+	
 }

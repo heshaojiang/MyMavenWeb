@@ -47,4 +47,5 @@
     
     <!-- cxf配置 -->
 	<import resource="cxf-servlet.xml"/>
+
 </beans>              

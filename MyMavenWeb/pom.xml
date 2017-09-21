@@ -2,9 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">  
     <modelVersion>4.0.0</modelVersion>  
     <groupId>com.xiaoming</groupId>  
-    <artifactId>test</artifactId>  
+    <artifactId>MyMavenWeb</artifactId>  
     <packaging>war</packaging>
-    <version>2.0.1</version>  
+    <version>1.0</version>  
     <url>http://maven.apache.org</url>
   
     <properties>  
@@ -16,7 +16,7 @@
         <cxf.version>3.0.7</cxf.version>
     </properties>  
     <dependencies>  
-        <dependency>  
+        <!-- <dependency>  
             <groupId>org.springframework</groupId>  
             <artifactId>spring-core</artifactId>  
             <version>${spring.version}</version>  
@@ -30,11 +30,11 @@
             <groupId>org.springframework</groupId>  
             <artifactId>spring-test</artifactId>  
             <version>${spring.version}</version>  
-        </dependency>  
+        </dependency>   -->
         <dependency>  
             <groupId>org.mybatis</groupId>  
             <artifactId>mybatis</artifactId>  
-            <version>${mybatis.version}</version>  
+            <version>${mybatis.version}</version>
         </dependency>  
         <dependency>  
             <groupId>org.mybatis</groupId>  
@@ -55,7 +55,7 @@
             <groupId>junit</groupId>  
             <artifactId>junit</artifactId>  
             <version>4.11</version>  
-            <scope>test</scope>  
+            <scope>test</scope> <!-- 如果单独调试，则应注释掉 --> 
         </dependency>  
         <dependency>  
             <groupId>c3p0</groupId>  
@@ -129,7 +129,7 @@
             <artifactId>jackson-mapper-asl</artifactId>  
             <version>1.9.9</version>  
         </dependency>  
-        <dependency>
+        <!-- <dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
 		    <version>4.0.8.RELEASE</version>
@@ -138,7 +138,7 @@
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>4.0.8.RELEASE</version>
-		</dependency>
+		</dependency> -->
 		
 		 <dependency>
 	       <groupId>commons-pool</groupId>
@@ -161,6 +161,19 @@
 		    <artifactId>cxf-rt-transports-http</artifactId>  
 		    <version>${cxf.version}</version>  
 		</dependency> 
+		<!-- easymock jar包引用 -->
+		<dependency>
+		  <groupId>org.easymock</groupId>
+		  <artifactId>easymock</artifactId>
+		  <version>3.4</version>
+		  <scope>test</scope><!-- 如果单独调试，则应注释掉 -->
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/ognl/ognl -->
+		<dependency>
+		    <groupId>ognl</groupId>
+		    <artifactId>ognl</artifactId>
+		    <version>3.2.3</version>
+		</dependency>
     </dependencies>  
     
      
@@ -171,8 +184,11 @@
         		<artifactId>maven-compiler-plugin</artifactId>  
                 <version>2.3.2</version>  
                 <configuration>  
-                    <source>1.7</source>  
+                    <source>1.7</source><!-- jdk的版本 -->  
                     <target>1.7</target>  
+                    <compilerArguments>
+	                   <extdirs>${basedir}/src/main/webapp/WEB-INF/lib</extdirs>
+	               </compilerArguments>
                 </configuration>  
         	</plugin>
             <plugin>  
@@ -180,9 +196,25 @@
                 <version>2.2</version>  
                 <configuration>  
                     <version>3.0</version>  
-                    <failOnMissingWebXml>false</failOnMissingWebXml>  
+                    <failOnMissingWebXml>false</failOnMissingWebXml> 
+                    <!-- <excludes>  
+                         WEB-INF/classes/test/*.*
+                    </excludes>
+                    <packagingExcludes>WEB-INF/classes/test/*.*</packagingExcludes> 
+                    <executions>  
+                        <execution>src/test/java/test/*.*</execution>  
+                    </executions>  
+                    <warSourceExcludes>src/test/java/test/**</warSourceExcludes> -->  
                 </configuration>  
             </plugin>  
+            <plugin>  
+		        <groupId>org.apache.maven.plugins</groupId>  
+		        <artifactId>maven-surefire-plugin</artifactId>  
+		        <version>2.18.1</version>  
+		        <configuration>  
+		          <skipTests>true</skipTests>  <!-- 打包时是否跳过测试 -->
+		        </configuration>  
+		    </plugin>
         </plugins>  
         <finalName>${project.artifactId}_${project.version}_${maven.build.timestamp}</finalName>  
     </build>  

@@ -3,6 +3,32 @@
 	<name>MyMavenWeb</name>
 	<comment></comment>
 	<projects>
+		<project>spring-context-support</project>
+		<project>spring-context</project>
+		<project>spring-webmvc-portlet</project>
+		<project>spring-instrument</project>
+		<project>spring-beans-groovy</project>
+		<project>spring-webmvc-tiles3</project>
+		<project>spring-messaging</project>
+		<project>spring-framework-bom</project>
+		<project>spring-web</project>
+		<project>spring-websocket</project>
+		<project>spring-jdbc</project>
+		<project>spring-aop</project>
+		<project>spring-beans</project>
+		<project>spring-core</project>
+		<project>spring-build-src</project>
+		<project>spring-aspects</project>
+		<project>spring-tx</project>
+		<project>spring-webmvc</project>
+		<project>spring-jms</project>
+		<project>spring-oxm</project>
+		<project>spring-expression</project>
+		<project>spring-test</project>
+		<project>spring-orm-hibernate4</project>
+		<project>spring-instrument-tomcat</project>
+		<project>spring-orm</project>
+		<project>commons-logging</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -41,12 +67,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<name>com.genuitec.eclipse.ast.deploy.core.DeploymentBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.genuitec.eclipse.ast.deploy.core.DeploymentBuilder</name>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
